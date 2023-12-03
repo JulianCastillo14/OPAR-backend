@@ -4,6 +4,7 @@
  */
 package com.backend.demo.controlador;
 
+import com.backend.demo.modelo.Ciudadano;
 import com.backend.demo.modelo.LoginCiudadano;
 import com.backend.demo.servicio.CiudadanoServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,11 @@ public class CiudadanoController {
     CiudadanoServicio ciudadanoServicio;
     
     @PostMapping("/login")
-    public Integer Login(@RequestBody LoginCiudadano login){
+    public Ciudadano Login(@RequestBody LoginCiudadano login){
         System.out.println(login.getContraseña());
         System.out.println(login.getUsuario());
-        return ciudadanoServicio.LoginCiudadano(login);
+        return ciudadanoServicio.Login(login);
     }
+    
+    
 }

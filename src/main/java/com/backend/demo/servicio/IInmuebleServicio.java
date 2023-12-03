@@ -4,15 +4,13 @@
  */
 package com.backend.demo.servicio;
 
-import com.backend.demo.modelo.Ciudadano;
-import com.backend.demo.modelo.LoginCiudadano;
+import com.backend.demo.modelo.Inmueble;
+import java.util.List;
 
 /**
  *
  * @author juang
  */
-public interface ICiudadanoServicio {
-    
-    Ciudadano Login(LoginCiudadano login);
-    
+public interface IInmuebleServicio {
+    List<Inmueble> ObtenerInmuebles();
 }

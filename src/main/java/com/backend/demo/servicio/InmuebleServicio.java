@@ -4,10 +4,10 @@
  */
 package com.backend.demo.servicio;
 
-import com.backend.demo.modelo.Ciudadano;
-import com.backend.demo.modelo.LoginCiudadano;
-import com.backend.demo.repositorio.CiudadanoRepositorio;
+import com.backend.demo.modelo.Inmueble;
+import com.backend.demo.repositorio.InmuebleRepositorio;
 import jakarta.transaction.Transactional;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,17 +17,14 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Transactional
-public class CiudadanoServicio implements ICiudadanoServicio{
+public class InmuebleServicio implements IInmuebleServicio{
     
     @Autowired
-    CiudadanoRepositorio ciudadanoRepositorio;
+    InmuebleRepositorio inmueblerepositorio;
 
     @Override
-    public Ciudadano Login(LoginCiudadano login) {
-        return ciudadanoRepositorio.findByUsuarioYContraseña(login.getUsuario(), login.getContraseña());
+    public List<Inmueble> ObtenerInmuebles() {
+        return inmueblerepositorio.findAll();
     }
-
- 
-    
     
 }

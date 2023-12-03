@@ -16,4 +16,7 @@ import org.springframework.data.repository.query.Param;
 public interface CiudadanoRepositorio extends JpaRepository<Ciudadano, String> {
     @Query("select count(*) from Ciudadano as p where p.usuario = :usuario and p.contraseña = :contraseña")
     Integer findByUsuarioYContraseñaCount(@Param("usuario") String usuario, @Param("contraseña") String contraseña);
+    
+    @Query("select p from Ciudadano as p where p.usuario = :usuario and p.contraseña = :contraseña")
+    Ciudadano findByUsuarioYContraseña(@Param("usuario") String usuario, @Param("contraseña") String contraseña);
 }
