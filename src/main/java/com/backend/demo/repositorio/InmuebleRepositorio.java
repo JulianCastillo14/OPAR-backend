@@ -4,7 +4,9 @@
  */
 package com.backend.demo.repositorio;
 
+import com.backend.demo.modelo.Ciudadano;
 import com.backend.demo.modelo.Inmueble;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -12,5 +14,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author juang
  */
 public interface InmuebleRepositorio extends JpaRepository<Inmueble, Integer>{
-    
+    List<Inmueble> findByNumeroDocumento(Ciudadano numeroDocumento);
 }

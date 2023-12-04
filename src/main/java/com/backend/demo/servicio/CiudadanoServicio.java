@@ -26,6 +26,11 @@ public class CiudadanoServicio implements ICiudadanoServicio{
     public Ciudadano Login(LoginCiudadano login) {
         return ciudadanoRepositorio.findByUsuarioYContraseña(login.getUsuario(), login.getContraseña());
     }
+    
+    public Ciudadano getByNumeroDocumento(String numeroDocumento) {
+        return ciudadanoRepositorio.findByNumeroDocumento(numeroDocumento);
+    }
+
 
  
     
