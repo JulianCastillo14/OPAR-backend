@@ -4,6 +4,7 @@
  */
 package com.backend.demo.modelo;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,7 +12,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.List;
 
 /**
  *
@@ -34,6 +37,10 @@ public class Inmueble {
     @ManyToOne
     @JoinColumn(name="Id_Barrio")
     private Barrio idBarrio;
+    
+    @OneToMany(mappedBy = "inmueble")
+    @JsonManagedReference
+    private List<Imagen> imagenes;
      
     @ManyToOne
     @JoinColumn(name="Numero_Documento")
@@ -60,7 +67,7 @@ public class Inmueble {
     public Inmueble() {
     }
 
-    public Inmueble(Integer idInmueble, Tipo_Inmueble idTipoInmueble, Barrio idBarrio, Ciudadano numeroDocumento, Integer cantidadHabitaciones, Integer serviciosPublicos, float area, String descripcion, String direccion, float precio) {
+    public Inmueble(Integer idInmueble, Tipo_Inmueble idTipoInmueble, Barrio idBarrio, Ciudadano numeroDocumento, Integer cantidadHabitaciones, Integer serviciosPublicos, float area, String descripcion, String direccion, float precio, List<Imagen> imagenes) {
         this.idInmueble = idInmueble;
         this.idTipoInmueble = idTipoInmueble;
         this.idBarrio = idBarrio;
@@ -71,6 +78,7 @@ public class Inmueble {
         this.descripcion = descripcion;
         this.direccion = direccion;
         this.precio = precio;
+        this.imagenes = imagenes;
     }
     
     
@@ -154,4 +162,13 @@ public class Inmueble {
     public void setPrecio(float precio) {
         this.precio = precio;
     }
+
+    public List<Imagen> getImagenes() {
+        return imagenes;
+    }
+
+    public void setImagenes(List<Imagen> imagenes) {
+        this.imagenes = imagenes;
+    }
+    
 }

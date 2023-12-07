@@ -19,4 +19,7 @@ public interface CiudadanoRepositorio extends JpaRepository<Ciudadano, String> {
     
     @Query("select p from Ciudadano as p where p.usuario = :usuario and p.contraseña = :contraseña")
     Ciudadano findByUsuarioYContraseña(@Param("usuario") String usuario, @Param("contraseña") String contraseña);
+    
+    Ciudadano findByNumeroDocumento(String numeroDocumento);
+
 }
