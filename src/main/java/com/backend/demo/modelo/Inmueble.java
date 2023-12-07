@@ -53,6 +53,9 @@ public class Inmueble {
     
     @Column(name="Direccion")
     private String direccion;
+    
+    @Column(name="Precio")
+    private float precio;
 
     public Inmueble() {
     }
@@ -70,8 +73,7 @@ public class Inmueble {
         this.precio = precio;
     }
     
-    @Column(name="Precio")
-    private float precio;
+    
 
     public Integer getIdInmueble() {
         return idInmueble;
