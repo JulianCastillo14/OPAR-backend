@@ -6,6 +6,8 @@ package com.backend.demo.modelo;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -15,10 +17,11 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name=Barrio.TABLE_NAME)
-class Barrio {
+public class Barrio {
     public static final String TABLE_NAME = "Barrio";
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="Id_Barrio")
     private Integer idBarrio;
     

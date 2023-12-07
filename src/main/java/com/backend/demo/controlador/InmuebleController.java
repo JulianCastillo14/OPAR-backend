@@ -34,12 +34,5 @@ public class InmuebleController {
     @GetMapping("/arrendador/{numeroDocumento}")
     public List<Inmueble> getInmueblesByNumeroDocumento(@PathVariable String numeroDocumento) {
         return inmuebleServicio.getInmueblesByNumeroDocumento(numeroDocumento);
-    }
-
-
-    
-    
-
-    
-    
+    }   
 }
