@@ -63,6 +63,19 @@ public class Inmueble {
 
     public Inmueble() {
     }
+    
+    public Inmueble(Integer idInmueble, Tipo_Inmueble idTipoInmueble, Barrio idBarrio, Ciudadano numeroDocumento, Integer cantidadHabitaciones, Integer serviciosPublicos, float area, String descripcion, String direccion, float precio) {
+        this.idInmueble = idInmueble;
+        this.idTipoInmueble = idTipoInmueble;
+        this.idBarrio = idBarrio;
+        this.numeroDocumento = numeroDocumento;
+        this.cantidadHabitaciones = cantidadHabitaciones;
+        this.serviciosPublicos = serviciosPublicos;
+        this.area = area;
+        this.descripcion = descripcion;
+        this.direccion = direccion;
+        this.precio = precio;
+    }
 
     public Inmueble(Integer idInmueble, Tipo_Inmueble idTipoInmueble, Barrio idBarrio, Ciudadano numeroDocumento, Integer cantidadHabitaciones, Integer serviciosPublicos, float area, String descripcion, String direccion, float precio, List<Imagen> imagenes) {
         this.idInmueble = idInmueble;
