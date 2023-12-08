@@ -5,6 +5,7 @@
 package com.backend.demo.repositorio;
 
 import com.backend.demo.modelo.Ciudadano;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -20,6 +21,7 @@ public interface CiudadanoRepositorio extends JpaRepository<Ciudadano, String> {
     @Query("select p from Ciudadano as p where p.usuario = :usuario and p.contraseña = :contraseña")
     Ciudadano findByUsuarioYContraseña(@Param("usuario") String usuario, @Param("contraseña") String contraseña);
     
-    Ciudadano findByNumeroDocumento(String numeroDocumento);
+    Optional<Ciudadano> findByNumeroDocumento(String numeroDocumento);
+
 
 }

@@ -2,6 +2,7 @@
 package com.backend.demo.modelo;
 
 import com.backend.demo.deserializer.BarrioDeserializer;
+import com.backend.demo.deserializer.CiudadanoDeserializer;
 import com.backend.demo.deserializer.TipoInmuebleDeserializer;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -46,6 +47,7 @@ public class Inmueble {
      
     @ManyToOne
     @JoinColumn(name="Numero_Documento")
+    @JsonDeserialize(using = CiudadanoDeserializer.class)
     private Ciudadano numeroDocumento;
      
     @Column(name="Cantidad_Habitaciones")
