@@ -1,7 +1,9 @@
 
 package com.backend.demo.modelo;
 
+import com.backend.demo.deserializer.TipoInmuebleDeserializer;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,6 +31,7 @@ public class Inmueble {
              
     @ManyToOne
     @JoinColumn(name="Id_Tipo_Inmueble")
+    @JsonDeserialize(using = TipoInmuebleDeserializer.class)
     private Tipo_Inmueble idTipoInmueble;
      
     @ManyToOne
