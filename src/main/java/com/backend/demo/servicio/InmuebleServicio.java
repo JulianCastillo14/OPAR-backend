@@ -36,8 +36,8 @@ public class InmuebleServicio implements IInmuebleServicio{
         return inmueblerepositorio.findByNumeroDocumento(ciudadano);
     }
 
-
-
-
-    
+    @Override
+    public Inmueble nuevoInmueble(Inmueble inmueble) {
+        return inmueblerepositorio.save(inmueble);
+    }  
 }
