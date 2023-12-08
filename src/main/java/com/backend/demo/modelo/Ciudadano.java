@@ -3,10 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.backend.demo.modelo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.List;
 
 /**
  *
@@ -28,6 +31,8 @@ public class Ciudadano {
     private String contraseña;
     @Column(name = "Telefono")
     private String telefono;
+    
+  
 
     public Ciudadano() {
     }

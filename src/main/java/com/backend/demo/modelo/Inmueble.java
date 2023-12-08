@@ -41,7 +41,8 @@ public class Inmueble {
     @OneToMany(mappedBy = "inmueble")
     @JsonManagedReference
     private List<Imagen> imagenes;
-     
+    
+  
     @ManyToOne
     @JoinColumn(name="Numero_Documento")
     private Ciudadano numeroDocumento;
