@@ -26,7 +26,7 @@ public class Inmueble {
     public static final String TABLE_NAME = "Inmueble";
      
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="Id_Inmueble")
     private Integer idInmueble;
              
