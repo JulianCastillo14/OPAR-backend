@@ -19,13 +19,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
-public class OpinionServicio implements IOpinionServicio {
+    public class OpinionServicio implements IOpinionServicio {
 
     @Autowired
     OpinionRepositorio opinionRepositorio;
     
     @Override
-    public List<Opinion> ObtenerOpinionesInmueble(Inmueble inmueble) {
+    public List<Opinion> ObtenerOpinionesInmueble(Integer inmueble) {
         return opinionRepositorio.findByInmueble(inmueble);
     }
     

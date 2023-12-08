@@ -13,5 +13,5 @@ import java.util.List;
  * @author juang
  */
 public interface IOpinionServicio {
-        List<Opinion> ObtenerOpinionesInmueble(Inmueble inmueble);
+        List<Opinion> ObtenerOpinionesInmueble(Integer inmueble);
 }

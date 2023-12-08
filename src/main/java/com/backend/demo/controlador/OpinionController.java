@@ -29,7 +29,8 @@ public class OpinionController {
     OpinionServicio opinionServicio;
     
     @PostMapping("/inmuebles")
-    public List<Opinion> BuscarPorInmueble(@RequestBody Inmueble inmueble){
+    public List<Opinion> BuscarPorInmueble(@RequestBody Integer inmueble){
+        System.out.println(inmueble.toString());
         return opinionServicio.ObtenerOpinionesInmueble(inmueble);
     }
 }
