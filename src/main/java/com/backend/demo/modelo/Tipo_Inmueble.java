@@ -15,7 +15,7 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name=Tipo_Inmueble.TABLE_NAME)
-class Tipo_Inmueble {
+public class Tipo_Inmueble {
     public static final String TABLE_NAME = "Tipo_Inmueble";
     
     @Id

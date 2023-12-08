@@ -1,10 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.backend.demo.modelo;
 
+import com.backend.demo.deserializer.BarrioDeserializer;
+import com.backend.demo.deserializer.CiudadanoDeserializer;
+import com.backend.demo.deserializer.TipoInmuebleDeserializer;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,16 +27,18 @@ public class Inmueble {
     public static final String TABLE_NAME = "Inmueble";
      
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="Id_Inmueble")
     private Integer idInmueble;
              
     @ManyToOne
     @JoinColumn(name="Id_Tipo_Inmueble")
+    @JsonDeserialize(using = TipoInmuebleDeserializer.class)
     private Tipo_Inmueble idTipoInmueble;
      
     @ManyToOne
     @JoinColumn(name="Id_Barrio")
+    @JsonDeserialize(using = BarrioDeserializer.class)
     private Barrio idBarrio;
     
     @OneToMany(mappedBy = "inmueble")
@@ -45,6 +48,7 @@ public class Inmueble {
   
     @ManyToOne
     @JoinColumn(name="Numero_Documento")
+    @JsonDeserialize(using = CiudadanoDeserializer.class)
     private Ciudadano numeroDocumento;
      
     @Column(name="Cantidad_Habitaciones")
@@ -66,6 +70,19 @@ public class Inmueble {
     private float precio;
 
     public Inmueble() {
+    }
+    
+    public Inmueble(Integer idInmueble, Tipo_Inmueble idTipoInmueble, Barrio idBarrio, Ciudadano numeroDocumento, Integer cantidadHabitaciones, Integer serviciosPublicos, float area, String descripcion, String direccion, float precio) {
+        this.idInmueble = idInmueble;
+        this.idTipoInmueble = idTipoInmueble;
+        this.idBarrio = idBarrio;
+        this.numeroDocumento = numeroDocumento;
+        this.cantidadHabitaciones = cantidadHabitaciones;
+        this.serviciosPublicos = serviciosPublicos;
+        this.area = area;
+        this.descripcion = descripcion;
+        this.direccion = direccion;
+        this.precio = precio;
     }
 
     public Inmueble(Integer idInmueble, Tipo_Inmueble idTipoInmueble, Barrio idBarrio, Ciudadano numeroDocumento, Integer cantidadHabitaciones, Integer serviciosPublicos, float area, String descripcion, String direccion, float precio, List<Imagen> imagenes) {

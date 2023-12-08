@@ -8,6 +8,7 @@ import com.backend.demo.modelo.Ciudadano;
 import com.backend.demo.modelo.LoginCiudadano;
 import com.backend.demo.repositorio.CiudadanoRepositorio;
 import jakarta.transaction.Transactional;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,11 +29,8 @@ public class CiudadanoServicio implements ICiudadanoServicio{
     }
     
     public Ciudadano getByNumeroDocumento(String numeroDocumento) {
-        return ciudadanoRepositorio.findByNumeroDocumento(numeroDocumento);
+        Optional<Ciudadano> ciudadanoOptional = ciudadanoRepositorio.findByNumeroDocumento(numeroDocumento);
+        return ciudadanoOptional.orElse(null);
     }
-
-
- 
-    
-    
+   
 }
