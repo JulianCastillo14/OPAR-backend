@@ -41,7 +41,7 @@ public class Inmueble {
     @JsonDeserialize(using = BarrioDeserializer.class)
     private Barrio idBarrio;
     
-    @OneToMany(mappedBy = "idInmueble")
+    @OneToMany(mappedBy = "inmueble")
     @JsonManagedReference
     private List<Imagen> imagenes;
     

@@ -24,7 +24,7 @@ public class Imagen {
     @JoinColumn(name="Id_Inmueble")
     @JsonDeserialize(using = InmuebleDeserializer.class)
     @JsonBackReference
-    private Inmueble idInmueble;
+    private Inmueble inmueble;
     
     @Column(name = "URL")
     private String url;
@@ -32,8 +32,8 @@ public class Imagen {
     public Imagen() {
     }
 
-    public Imagen(Inmueble idInmueble, String url) {
-        this.idInmueble = idInmueble;
+    public Imagen(Inmueble inmueble, String url) {
+        this.inmueble = inmueble;
         this.url = url;
     }
     
@@ -46,11 +46,11 @@ public class Imagen {
     }
 
     public Inmueble getInmueble() {
-        return idInmueble;
+        return inmueble;
     }
 
-    public void setInmueble(Inmueble idInmueble) {
-        this.idInmueble = idInmueble;
+    public void setInmueble(Inmueble inmueble) {
+        this.inmueble = inmueble;
     }
 
     public String getUrl() {
@@ -63,7 +63,7 @@ public class Imagen {
 
     @Override
     public String toString() {
-        return "Imagen{" + "idImagen=" + idImagen + ", idInmueble=" + idInmueble + ", url=" + url + '}';
+        return "Imagen{" + "idImagen=" + idImagen + ", idInmueble=" + inmueble + ", url=" + url + '}';
     }
 }
 
