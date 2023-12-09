@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.backend.demo.modelo;
 
 /**
@@ -9,7 +5,9 @@ package com.backend.demo.modelo;
  * @author julia
  */
 
+import com.backend.demo.deserializer.InmuebleDeserializer;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.*;
 
 @Entity
@@ -24,6 +22,7 @@ public class Imagen {
     
     @ManyToOne
     @JoinColumn(name="Id_Inmueble")
+    @JsonDeserialize(using = InmuebleDeserializer.class)
     @JsonBackReference
     private Inmueble inmueble;
     
@@ -37,7 +36,7 @@ public class Imagen {
         this.inmueble = inmueble;
         this.url = url;
     }
-
+    
     public Integer getIdImagen() {
         return idImagen;
     }
@@ -60,6 +59,11 @@ public class Imagen {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    @Override
+    public String toString() {
+        return "Imagen{" + "idImagen=" + idImagen + ", idInmueble=" + inmueble + ", url=" + url + '}';
     }
 }
 
