@@ -45,7 +45,6 @@ public class Inmueble {
     @JsonManagedReference
     private List<Imagen> imagenes;
     
-  
     @ManyToOne
     @JoinColumn(name="Numero_Documento")
     @JsonDeserialize(using = CiudadanoDeserializer.class)

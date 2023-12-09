@@ -45,8 +45,7 @@ public class Opinion {
     }
 
     
-    public Opinion(Integer idOpinion, Inmueble idInmueble, Ciudadano numeroDocumento, String comentario, float calificacion) {
-        this.idOpinion = idOpinion;
+    public Opinion(Inmueble idInmueble, Ciudadano numeroDocumento, String comentario, float calificacion) {
         this.idInmueble = idInmueble;
         this.numeroDocumento = numeroDocumento;
         this.comentario = comentario;
@@ -93,6 +92,11 @@ public class Opinion {
 
     public void setCalificacion(float calificacion) {
         this.calificacion = calificacion;
+    }
+
+    @Override
+    public String toString() {
+        return "Opinion{" + "idOpinion=" + idOpinion + ", idInmueble=" + idInmueble + ", numeroDocumento=" + numeroDocumento + ", comentario=" + comentario + ", calificacion=" + calificacion + '}';
     }
     
     

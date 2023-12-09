@@ -14,4 +14,5 @@ import java.util.List;
  */
 public interface IOpinionServicio {
         List<Opinion> ObtenerOpinionesInmueble(Integer inmueble);
+        Opinion AgregarOpinion(Opinion opinion);
 }

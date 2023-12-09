@@ -12,6 +12,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,5 +33,12 @@ public class OpinionController {
     public List<Opinion> BuscarPorInmueble(@RequestBody Integer inmueble){
         System.out.println(inmueble.toString());
         return opinionServicio.ObtenerOpinionesInmueble(inmueble);
+    }
+    
+    @PutMapping("/agregar")
+    public Opinion AgregarOpinion(@RequestBody Opinion opinion){
+        System.out.println(opinion.toString());
+        opinionServicio.AgregarOpinion(opinion);
+        return opinion;
     }
 }

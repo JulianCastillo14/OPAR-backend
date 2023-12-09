@@ -28,5 +28,11 @@ import org.springframework.stereotype.Service;
     public List<Opinion> ObtenerOpinionesInmueble(Integer inmueble) {
         return opinionRepositorio.findByInmueble(inmueble);
     }
+
+    @Override
+    public Opinion AgregarOpinion(Opinion opinion) {
+        return opinionRepositorio.save(opinion);
+    }
+    
     
 }
