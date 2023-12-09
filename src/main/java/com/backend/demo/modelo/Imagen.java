@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.backend.demo.modelo;
 
 /**
@@ -9,7 +5,9 @@ package com.backend.demo.modelo;
  * @author julia
  */
 
+import com.backend.demo.deserializer.InmuebleDeserializer;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.*;
 
 @Entity
@@ -24,8 +22,9 @@ public class Imagen {
     
     @ManyToOne
     @JoinColumn(name="Id_Inmueble")
+    @JsonDeserialize(using = InmuebleDeserializer.class)
     @JsonBackReference
-    private Inmueble inmueble;
+    private Inmueble idInmueble;
     
     @Column(name = "URL")
     private String url;
@@ -33,11 +32,11 @@ public class Imagen {
     public Imagen() {
     }
 
-    public Imagen(Inmueble inmueble, String url) {
-        this.inmueble = inmueble;
+    public Imagen(Inmueble idInmueble, String url) {
+        this.idInmueble = idInmueble;
         this.url = url;
     }
-
+    
     public Integer getIdImagen() {
         return idImagen;
     }
@@ -47,11 +46,11 @@ public class Imagen {
     }
 
     public Inmueble getInmueble() {
-        return inmueble;
+        return idInmueble;
     }
 
-    public void setInmueble(Inmueble inmueble) {
-        this.inmueble = inmueble;
+    public void setInmueble(Inmueble idInmueble) {
+        this.idInmueble = idInmueble;
     }
 
     public String getUrl() {
@@ -60,6 +59,11 @@ public class Imagen {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    @Override
+    public String toString() {
+        return "Imagen{" + "idImagen=" + idImagen + ", idInmueble=" + idInmueble + ", url=" + url + '}';
     }
 }
 
