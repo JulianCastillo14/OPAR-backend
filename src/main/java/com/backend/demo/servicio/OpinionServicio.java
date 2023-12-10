@@ -6,6 +6,7 @@ package com.backend.demo.servicio;
 
 import com.backend.demo.modelo.Inmueble;
 import com.backend.demo.modelo.Opinion;
+import com.backend.demo.modelo.OpinionEditDTO;
 import com.backend.demo.repositorio.OpinionRepositorio;
 import jakarta.transaction.Transactional;
 import java.util.List;
@@ -33,6 +34,30 @@ import org.springframework.stereotype.Service;
     public Opinion AgregarOpinion(Opinion opinion) {
         return opinionRepositorio.save(opinion);
     }
-    
-    
+
+    @Override
+    public Opinion ObtenerOpinionUsuario(OpinionEditDTO opinionEdit) {
+        return opinionRepositorio.findByUsuario(opinionEdit.getIdInmueble(), opinionEdit.getNumeroDocumento());
+    }
+
+    @Override
+    public Opinion EditarOpinion(Opinion opinion) {
+        Opinion opinionEditar;
+        opinionEditar = opinionRepositorio.findById(opinion.getIdOpinion()).orElse(null);
+        if(opinionEditar != null){
+            opinionEditar.setCalificacion(opinion.getCalificacion());
+            opinionEditar.setComentario(opinion.getComentario());
+        }
+        
+        opinionRepositorio.save(opinionEditar);
+        return opinionEditar;
+    }
+
+    @Override
+    public Opinion EliminarOpinion(Integer idOpinion) {
+        Opinion opinionBorrada = opinionRepositorio.findById(idOpinion).orElse(null);
+        opinionRepositorio.deleteById(idOpinion);
+        return opinionBorrada;
+    }
+
 }

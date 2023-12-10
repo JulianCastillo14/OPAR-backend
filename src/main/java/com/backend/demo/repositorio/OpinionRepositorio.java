@@ -18,4 +18,7 @@ import org.springframework.data.repository.query.Param;
 public interface OpinionRepositorio extends JpaRepository<Opinion, Integer>{
         @Query("SELECT p FROM Opinion p WHERE p.idInmueble.idInmueble = :inmuebleId")
         List<Opinion> findByInmueble(@Param("inmuebleId") Integer inmuebleId);
+        
+        @Query("SELECT p FROM Opinion p WHERE p.idInmueble.idInmueble = :inmuebleId AND p.numeroDocumento.numeroDocumento = :numeroDocumento")
+        Opinion findByUsuario(@Param("inmuebleId") Integer inmuebleId, @Param("numeroDocumento") String numeroDocumento);
 }

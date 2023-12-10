@@ -4,8 +4,8 @@
  */
 package com.backend.demo.servicio;
 
-import com.backend.demo.modelo.Inmueble;
 import com.backend.demo.modelo.Opinion;
+import com.backend.demo.modelo.OpinionEditDTO;
 import java.util.List;
 
 /**
@@ -15,4 +15,7 @@ import java.util.List;
 public interface IOpinionServicio {
         List<Opinion> ObtenerOpinionesInmueble(Integer inmueble);
         Opinion AgregarOpinion(Opinion opinion);
+        Opinion ObtenerOpinionUsuario(OpinionEditDTO opinionEdit);
+        Opinion EditarOpinion(Opinion opinion);
+        Opinion EliminarOpinion(Integer idOpinion);
 }

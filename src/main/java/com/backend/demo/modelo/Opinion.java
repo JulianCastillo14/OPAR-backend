@@ -4,6 +4,8 @@
  */
 package com.backend.demo.modelo;
 
+import com.backend.demo.deserializer.InmuebleDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,87 +19,88 @@ import jakarta.persistence.Table;
  *
  * @author juang
  */
-@Entity
-@Table(name=Opinion.TABLE_NAME)
-public class Opinion {
-    public static final String TABLE_NAME = "Opinion";
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id_Opinion")
-    private Integer idOpinion;
-    
-    @ManyToOne
-    @JoinColumn(name="Id_Inmueble")
-    private Inmueble idInmueble;
-    
-    @ManyToOne
-    @JoinColumn(name="Numero_Documento")
-    private Ciudadano numeroDocumento;
-    
-    @Column(name = "Comentario")
-    private String comentario;
-    
-    @Column(name = "Calificacion")
-    private float calificacion;
+    @Entity
+    @Table(name=Opinion.TABLE_NAME)
+    public class Opinion {
+        public static final String TABLE_NAME = "Opinion";
 
-    public Opinion() {
-    }
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "Id_Opinion")
+        private Integer idOpinion;
 
-    
-    public Opinion(Inmueble idInmueble, Ciudadano numeroDocumento, String comentario, float calificacion) {
-        this.idInmueble = idInmueble;
-        this.numeroDocumento = numeroDocumento;
-        this.comentario = comentario;
-        this.calificacion = calificacion;
-    }
+        @ManyToOne
+        @JoinColumn(name="Id_Inmueble")
+        @JsonDeserialize(using = InmuebleDeserializer.class)
+        private Inmueble idInmueble;
 
-    
-    
-    public Integer getIdOpinion() {
-        return idOpinion;
-    }
+        @ManyToOne
+        @JoinColumn(name="Numero_Documento")
+        private Ciudadano numeroDocumento;
 
-    public void setIdOpinion(Integer idOpinion) {
-        this.idOpinion = idOpinion;
-    }
+        @Column(name = "Comentario")
+        private String comentario;
 
-    public Inmueble getInmueble() {
-        return idInmueble;
-    }
+        @Column(name = "Calificacion")
+        private float calificacion;
 
-    public void setInmueble(Inmueble inmueble) {
-        this.idInmueble = inmueble;
-    }
+        public Opinion() {
+        }
 
-    public Ciudadano getNumeroDocumento() {
-        return numeroDocumento;
-    }
 
-    public void setNumeroDocumento(Ciudadano numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
-    }
+        public Opinion(Inmueble idInmueble, Ciudadano numeroDocumento, String comentario, float calificacion) {
+            this.idInmueble = idInmueble;
+            this.numeroDocumento = numeroDocumento;
+            this.comentario = comentario;
+            this.calificacion = calificacion;
+        }
 
-    public String getComentario() {
-        return comentario;
-    }
 
-    public void setComentario(String comentario) {
-        this.comentario = comentario;
-    }
 
-    public float getCalificacion() {
-        return calificacion;
-    }
+        public Integer getIdOpinion() {
+            return idOpinion;
+        }
 
-    public void setCalificacion(float calificacion) {
-        this.calificacion = calificacion;
-    }
+        public void setIdOpinion(Integer idOpinion) {
+            this.idOpinion = idOpinion;
+        }
 
-    @Override
-    public String toString() {
-        return "Opinion{" + "idOpinion=" + idOpinion + ", idInmueble=" + idInmueble + ", numeroDocumento=" + numeroDocumento + ", comentario=" + comentario + ", calificacion=" + calificacion + '}';
+        public Inmueble getInmueble() {
+            return idInmueble;
+        }
+
+        public void setInmueble(Inmueble inmueble) {
+            this.idInmueble = inmueble;
+        }
+
+        public Ciudadano getNumeroDocumento() {
+            return numeroDocumento;
+        }
+
+        public void setNumeroDocumento(Ciudadano numeroDocumento) {
+            this.numeroDocumento = numeroDocumento;
+        }
+
+        public String getComentario() {
+            return comentario;
+        }
+
+        public void setComentario(String comentario) {
+            this.comentario = comentario;
+        }
+
+        public float getCalificacion() {
+            return calificacion;
+        }
+
+        public void setCalificacion(float calificacion) {
+            this.calificacion = calificacion;
+        }
+
+        @Override
+        public String toString() {
+            return "Opinion{" + "idOpinion=" + idOpinion + ", idInmueble=" + idInmueble + ", numeroDocumento=" + numeroDocumento + ", comentario=" + comentario + ", calificacion=" + calificacion + '}';
+        }
+
+
     }
-    
-    
-}
