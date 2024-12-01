@@ -30,7 +30,7 @@ public class InmuebleController {
     @Autowired
     InmuebleServicio inmuebleServicio;
     
-    @GetMapping("/")
+    @GetMapping("/list")
     public List<Inmueble> ObtenerInmuebles(){
         return inmuebleServicio.ObtenerInmuebles();
     }
